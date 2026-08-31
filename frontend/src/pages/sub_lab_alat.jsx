@@ -187,7 +187,7 @@ export default function SubLabLab() {
       code: '801',
       title: 'I.801 | Fermentation and Separation Sub Lab',
       description: 'The Biomass Pretreatment Sublab focuses on the development and optimization of lignocellulosic biomass pretreatment technologies to enhance the accessibility of cellulose and hemicellulose for subsequent conversion processes. This sublab examines various physical, chemical, physicochemical, and biological pretreatment methods to improve the efficiency of renewable biomass utilization as a raw material for bioprocesses and biorefineries.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-4k-unSho73610UIWtS4DlHdZqapBsszNSJBekEkfYaFRcGPZYZLatwdspb-13DKbQY4ENUwDnl4ofiBe7xIWScHhGFDJrkUxsLdWsCg8rtBz12VZOTUdcuCvHlvoogrrCXB3j1barJVTOvtg-R7cHqhAs-rM0Y_4Om2ZPR0hMePhfGUfc1nBkhRlqMMmlqGlxPbwcN8zmBO1-GP1551LvENv72KZ_W2TbR47xkB-vuU_98p43bbs',
+      image: '/images/fermentation_lab.jpg',
       items: ['Microscope A', 'Centrifuge B', 'Incubator C'],
       isAvailable: true
     },
@@ -195,7 +195,7 @@ export default function SubLabLab() {
       code: '802',
       title: 'I.802 | Hydrolysis and Detoxification Sub Lab',
       description: 'The Hydrolysis and Detoxification Sublab focuses on converting pretreated biomass into fermentable sugars through enzymatic or chemical hydrolysis processes, as well as removing inhibitory compounds formed during pretreatment. Research activities include optimizing hydrolysis conditions, developing detoxification methods, and evaluating hydrolysate quality to support the sustainable production of biofuels, biochemicals, and biomaterials.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDpO9w0f1-1dvmEMWOKKOWh4nQ67EMvvJ6Maji8a7Mkavhiwvyot5K8h5Qpm9MSv7hIhH1OfsODNUyMQIdPsZjKDm1pkpffaqMOO4PfKMeduNBLs_GdFjvYIXlV1IrQyRo2mASlBd6qPAngUg2V3CV5XdHaZYEBK-jb8BRqmtzhY8lAUMAa8rBP5kBVV2_KIGBCrXuTgxhhnHBXgjLSza4I6phI75hovN6cJ8ZtEvZcHdkG2k6WIVyG',
+      image: '/images/hydrolysis_lab.jpg',
       items: ['Spectrophotometer', 'PCR Machine', 'Autoclave'],
       isAvailable: true
     },
@@ -203,7 +203,7 @@ export default function SubLabLab() {
       code: '803',
       title: 'I.803 | Biomass Pretreatment Sub Lab',
       description: 'The Biomass Pretreatment Sublab focuses on the development and optimization of lignocellulosic biomass pretreatment technologies to enhance the accessibility of cellulose and hemicellulose for subsequent conversion processes. This sublab examines various physical, chemical, physicochemical, and biological pretreatment methods to improve utilization efficiency.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAsLOVyqf1y0ckn9z3-MMbbMC-5ym3SjDEBPIkMB7LrNf7QAqKG7uHNoQUxqwU7wYK6ilpZP7omWbOD0wg077-gznAEHoZXNZPWy0HZl-tD47M1wTVNsQFW2KMQemybOuPPnlL-b3C51dtdMcEXmOqDxrG94QCCc3nFOGIOMgYV32Pmdf2d5cvhme4juLyCDBO9zGdob62MF_yQZfI5wkmotkPdaHfRQsoe7P13lmgCPZyWDZ3SJzxZ',
+      image: '/images/biomass_lab.jpg',
       items: ['Fume Hood 1', 'Fume Hood 2', 'Biosafety Cabinet'],
       isAvailable: true
     },
@@ -211,7 +211,7 @@ export default function SubLabLab() {
       code: '804',
       title: 'I.804 | Molecular Genomics Sub Lab',
       description: 'The Molecular Genomics Sublab focuses on utilizing molecular biology and genomics approaches to understand, characterize, and engineer biological systems involved in bioconversion processes. Research activities include genome analysis, gene expression, microbial community identification, metagenomics, as well as the development of microorganism engineering strategies to enhance the performance of fermentation, biodegradation, and high-value compound production processes.',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCkP48o8LF_RO1pC_7gTa2PrV9wqg4KPUHriXd5_BI1r3CXGR9aongE3Z6yvqkWba7h7d94o1PDiMUucsLZeL5MEPMGvSNXEre6wRfrq7nosWnnLxGKAy5BTrnxw2bpuawBfRXbRAfGSeJKdDAOLh-5-MfrFUMCqg4C_WPdPOvhxBMgZNfXR2Q1H_fGli9UlWwvt9EnDx-6-IaFXeSc3adPFm8knTPZEqDH0UtU8XOS9ovPAs7AiF3U',
+      image: '/images/molecular_lab.jpg',
       items: ['Workstation 1', 'Workstation 2', 'Server Rack'],
       isAvailable: true
     }
