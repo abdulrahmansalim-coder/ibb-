@@ -181,6 +181,13 @@ function DataRow({ row }) {
         </div>
       </td>
 
+      {/* NAMA ALAT */}
+      <td className="px-2 sm:px-4 py-3 sm:py-4 align-top">
+        <div className="mt-1 sm:mt-2">
+          <span className="text-[10px] sm:text-xs text-[#0B1C33] font-bold">{row.nama_alat || "-"}</span>
+        </div>
+      </td>
+
       {/* NAMA RESEARCHER */}
       <td className="px-2 sm:px-4 py-3 sm:py-4 align-top">
         <div className="mt-1 sm:mt-2">
@@ -405,7 +412,7 @@ export default function AdminAlatLogbookKepalaLab() {
   const handleDownloadPDF = () => {
     const doc = new jsPDF('landscape');
     const tableColumn = [
-      "PERIODE PENGGUNAAN ALAT", "NAMA RESEARCHER", "JENIS SAMPLE", 
+      "PERIODE PENGGUNAAN ALAT", "NAMA ALAT", "NAMA RESEARCHER", "JENIS SAMPLE", 
       "JENIS PENGUJIAN", "TUJUAN PENGUJIAN", "KONDISI TEKNIS",
       "PARAF STUDENT", "PARAF LABORAN", "CATATAN LABORAN", 
       "PARAF KEPALA LAB", "CATATAN KEPALA LAB", "CATATAN TAMBAHAN"
@@ -420,6 +427,7 @@ export default function AdminAlatLogbookKepalaLab() {
       
       const rowData = [
         `Mulai: ${row.tanggalMulai} ${row.jamMulai}\nSelesai: ${row.tanggalSelesai} ${row.jamSelesai}`,
+        row.nama_alat || "-",
         row.namaResearcher,
         row.jenisSample,
         row.jenisPengujian,
@@ -508,6 +516,7 @@ export default function AdminAlatLogbookKepalaLab() {
                       <thead className="bg-[#E9EBED] text-[#6B7280] font-bold uppercase tracking-wider text-[8px] sm:text-[10px]">
                         <tr>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[140px]">PERIODE PENGGUNAAN ALAT</th>
+                          <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[120px]">NAMA ALAT</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[120px]">NAMA RESEARCHER</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[100px]">JENIS SAMPLE</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[120px]">JENIS PENGUJIAN</th>

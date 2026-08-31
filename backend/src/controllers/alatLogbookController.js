@@ -8,6 +8,7 @@ function ensureTable() {
             const sql = `CREATE TABLE IF NOT EXISTS data_logbook_alat_user (
                 logbook_id INT AUTO_INCREMENT PRIMARY KEY,
                 sub_lab_alat_id VARCHAR(50) NULL,
+                nama_alat VARCHAR(150) NULL,
                 nama_lengkap VARCHAR(150) NOT NULL,
                 institusi_departemen VARCHAR(150) NULL,
                 prodi VARCHAR(100) NULL,
@@ -27,7 +28,15 @@ function ensureTable() {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )`;
-            db.query(sql, error => error ? reject(error) : resolve());
+            db.query(sql, (error) => {
+                if (error) {
+                    return reject(error);
+                }
+                // Try adding the column if it doesn't exist (fails silently if it does)
+                db.query(`ALTER TABLE data_logbook_alat_user ADD COLUMN nama_alat VARCHAR(150) NULL AFTER sub_lab_alat_id`, () => {
+                    resolve();
+                });
+            });
         });
     }
     return tableReady;
@@ -37,25 +46,25 @@ exports.createAlatLogbook = async (req, res) => {
     try {
         await ensureTable();
         const {
-            namaLengkap, institusi, prodi, room, jenisSample, researcherName,
+            namaLengkap, institusi, prodi, room, namaAlat, jenisSample, researcherName,
             jenisPengujian, tujuanPengujian, mulaiTanggal, mulaiWaktu,
             selesaiTanggal, selesaiWaktu, kondisiAlat, notes, parafFile
         } = req.body;
 
-        if (!namaLengkap || !room || !jenisSample || !researcherName || !jenisPengujian ||
+        if (!namaLengkap || !room || !namaAlat || !jenisSample || !researcherName || !jenisPengujian ||
             !tujuanPengujian || !mulaiTanggal || !mulaiWaktu || !selesaiTanggal ||
             !selesaiWaktu || !kondisiAlat || !notes || !parafFile) {
             return res.status(400).json({ message: 'Semua data logbook alat wajib diisi' });
         }
 
         const sql = `INSERT INTO data_logbook_alat_user
-            (sub_lab_alat_id, nama_lengkap, institusi_departemen, prodi,
+            (sub_lab_alat_id, nama_alat, nama_lengkap, institusi_departemen, prodi,
              periode_penggunaan_alat, waktu_mulai, waktu_selesai, nama_researcher,
              jenis_sample, jenis_pengujian, tujuan_pengujian, kondisi_teknis,
              paraf_student, catatan_tambahan)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
         const values = [
-            room, namaLengkap, institusi || null, prodi || null,
+            room, namaAlat, namaLengkap, institusi || null, prodi || null,
             `${mulaiTanggal} - ${selesaiTanggal}`,
             `${mulaiTanggal} ${mulaiWaktu}:00`, `${selesaiTanggal} ${selesaiWaktu}:00`,
             researcherName, jenisSample, jenisPengujian, tujuanPengujian,

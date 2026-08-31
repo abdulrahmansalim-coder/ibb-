@@ -143,6 +143,7 @@ export default function LogbookAlatResearcher() {
     namaLengkap: '',
     institusi: '',
     prodi: '',
+    namaAlat: '',
     jenisSample: '',
     jenisSampleLainnya: '', // Kolom isian singkat untuk jenis sample
     researcherName: '',
@@ -233,6 +234,7 @@ export default function LogbookAlatResearcher() {
       namaLengkap: '',
       institusi: '',
       prodi: '',
+      namaAlat: '',
       jenisSample: '',
       jenisSampleLainnya: '',
       researcherName: '',
@@ -386,8 +388,22 @@ export default function LogbookAlatResearcher() {
                 </span>
               </div>
               
-              {/* Jenis Sample - dengan logika conditional */}
+              {/* Nama Alat & Jenis Sample */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6">
+                <div>
+                  <label className="block text-[8px] sm:text-[10px] md:text-xs font-bold text-[#0B1C33] uppercase tracking-wide mb-1 sm:mb-2">Nama Alat</label>
+                  <select 
+                    name="namaAlat"
+                    value={formData.namaAlat}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border border-[#0B1C33] shadow-sm focus:border-[#0B1C33] focus:ring-[#0B1C33] text-xs sm:text-sm p-2 md:p-3 bg-gray-50"
+                  >
+                    <option value="">Pilih Nama Alat</option>
+                    {(selectedRoom?.items || ['Lainnya']).map((item, index) => (
+                      <option key={index} value={item}>{item}</option>
+                    ))}
+                  </select>
+                </div>
                 <div>
                   <label className="block text-[8px] sm:text-[10px] md:text-xs font-bold text-[#0B1C33] uppercase tracking-wide mb-1 sm:mb-2">Jenis Sample</label>
                   <select 

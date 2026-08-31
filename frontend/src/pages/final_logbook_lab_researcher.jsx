@@ -12,13 +12,13 @@ function Header() {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo Section - Left Side */}
           <div className="flex items-center gap-3">
-            <img 
-              alt="Institute Logo" 
-              className="h-10 md:h-12 w-auto object-contain" 
+            <img
+              alt="Institute Logo"
+              className="h-10 md:h-12 w-auto object-contain"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvbro60xS2lLLCBheA9vun2VFFTb_Q3ibg5fP90o3KfeXZtaE394jM2Mg7QFUY5zdtRVEvdORuz0dRKbULKNwp-dcmq4okigh4XuNP-MhuA_JBF1h9nXfL1F__axEwCFsWRzSTx0TlEhrW6t1oUSIr5kzCi6RsDhpkr4Mx07QP0IA5xKbqWNhYMpaoMa_tiIz7vFL1RW2njJVAr4ZVPhdJcdcoV_449G9ReGvYOmNVi9w-afD2LM2ggaHUbxIL0y-y9w"
             />
           </div>
-          
+
           {/* Desktop Navigation - Shown on lg and up */}
           <nav className="hidden lg:flex items-center space-x-8">
             <Link to="/sub-lab-lab" className="text-[10px] xl:text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-[#0B1C33] border-b-2 border-transparent hover:border-[#0B1C33] pb-1 transition">
@@ -83,8 +83,8 @@ function Sidebar({ onLabChange, selectedLab }) {
         </nav>
       </div>
       <div className="pt-8 border-t border-slate-200 space-y-1">
-        <Link 
-          to="/login" 
+        <Link
+          to="/login"
           onClick={() => {
             localStorage.removeItem('token');
             localStorage.removeItem('user');
@@ -104,7 +104,7 @@ function Sidebar({ onLabChange, selectedLab }) {
 // --- 3. COMPONENT SIGNATURE STATUS ---
 function SignatureStatus({ status, label }) {
   const getStatusConfig = () => {
-    switch(status) {
+    switch (status) {
       case 'approved':
         return {
           bgColor: 'bg-green-100',
@@ -260,7 +260,7 @@ function Pagination({ currentPage, totalPages, paginate, nextPage, prevPage }) {
   const getPageNumbers = () => {
     const pageNumbers = [];
     const maxVisible = 5;
-    
+
     if (totalPages <= maxVisible) {
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
@@ -288,22 +288,21 @@ function Pagination({ currentPage, totalPages, paginate, nextPage, prevPage }) {
         pageNumbers.push(totalPages);
       }
     }
-    
+
     return pageNumbers;
   };
 
   return (
     <div className="flex items-center gap-1">
-      <button 
+      <button
         onClick={prevPage}
-        className={`w-6 h-6 sm:w-7 sm:h-7 rounded border border-[#E2E8F0] flex items-center justify-center bg-white text-[#64748B] hover:bg-gray-50 text-sm ${
-          currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
+        className={`w-6 h-6 sm:w-7 sm:h-7 rounded border border-[#E2E8F0] flex items-center justify-center bg-white text-[#64748B] hover:bg-gray-50 text-sm ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         disabled={currentPage === 1}
       >
         ‹
       </button>
-      
+
       {getPageNumbers().map((number, index) => (
         number === '...' ? (
           <span key={`ellipsis-${index}`} className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center text-[#64748B] text-sm">
@@ -313,22 +312,20 @@ function Pagination({ currentPage, totalPages, paginate, nextPage, prevPage }) {
           <button
             key={number}
             onClick={() => paginate(number)}
-            className={`w-6 h-6 sm:w-7 sm:h-7 rounded flex items-center justify-center font-medium transition-all text-sm ${
-              currentPage === number 
-                ? 'bg-[#1A233A] text-white shadow-md' 
-                : 'border border-[#E2E8F0] bg-white text-[#1A233A] hover:bg-gray-50'
-            }`}
+            className={`w-6 h-6 sm:w-7 sm:h-7 rounded flex items-center justify-center font-medium transition-all text-sm ${currentPage === number
+              ? 'bg-[#1A233A] text-white shadow-md'
+              : 'border border-[#E2E8F0] bg-white text-[#1A233A] hover:bg-gray-50'
+              }`}
           >
             {number}
           </button>
         )
       ))}
 
-      <button 
+      <button
         onClick={nextPage}
-        className={`w-6 h-6 sm:w-7 sm:h-7 rounded border border-[#E2E8F0] flex items-center justify-center bg-white text-[#1A233A] hover:bg-gray-50 text-sm ${
-          currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
+        className={`w-6 h-6 sm:w-7 sm:h-7 rounded border border-[#E2E8F0] flex items-center justify-center bg-white text-[#1A233A] hover:bg-gray-50 text-sm ${currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
         disabled={currentPage === totalPages}
       >
         ›
@@ -382,8 +379,8 @@ export default function FinalLogbookLabResearcher() {
   }, []);
 
   // Filter data berdasarkan Sub-Lab yang dipilih
-  const filteredData = selectedLab === 'all' 
-    ? allTableData 
+  const filteredData = selectedLab === 'all'
+    ? allTableData
     : allTableData.filter(row => row.subLab === selectedLab);
   const latestEntry = allTableData[0];
 
@@ -415,15 +412,15 @@ export default function FinalLogbookLabResearcher() {
   const handleDownloadPDF = () => {
     const doc = new jsPDF('landscape');
     const tableColumn = [
-      "PROYEK PENELITIAN", "PERIODE PENELITIAN", "DETAIL AKTIVITAS", 
-      "KTM/KARTU IDENTITAS", "PARAF STUDENT", "PARAF PI", 
+      "PROYEK PENELITIAN", "PERIODE PENELITIAN", "DETAIL AKTIVITAS",
+      "KTM/KARTU IDENTITAS", "PARAF STUDENT", "PARAF PI",
       "CATATAN & PARAF KEPALA LAB", "CATATAN & PARAF LABORAN", "CATATAN TAMBAHAN"
     ];
     const tableRows = [];
 
     filteredData.forEach(row => {
       const getStatusLabel = (status) => {
-        switch(status) {
+        switch (status) {
           case 'approved': return '✅ Approved';
           case 'rejected': return '❌ Rejected';
           default: return '⏳ Pending';
@@ -444,10 +441,10 @@ export default function FinalLogbookLabResearcher() {
       tableRows.push(rowData);
     });
 
-    const title = selectedLab === 'all' 
-      ? "General LogBook Laboratorium - All Rooms" 
+    const title = selectedLab === 'all'
+      ? "General LogBook Laboratorium - All Rooms"
       : `General LogBook Laboratorium - Sub-Lab ${selectedLab}`;
-    
+
     doc.text(title, 14, 15);
     doc.autoTable({
       head: [tableColumn],
@@ -467,9 +464,9 @@ export default function FinalLogbookLabResearcher() {
         8: { cellWidth: 22 }
       }
     });
-    
-    const fileName = selectedLab === 'all' 
-      ? "General_LogBook_Laboratorium_All_Rooms.pdf" 
+
+    const fileName = selectedLab === 'all'
+      ? "General_LogBook_Laboratorium_All_Rooms.pdf"
       : `General_LogBook_Laboratorium_SubLab_${selectedLab}.pdf`;
     doc.save(fileName);
   };
@@ -479,7 +476,7 @@ export default function FinalLogbookLabResearcher() {
       <div className="max-w-7xl mx-auto bg-white shadow-lg rounded-sm overflow-hidden">
         <Header />
         <div className="flex flex-col lg:flex-row flex-1">
-          
+
           {/* Mobile & Tablet Horizontal Navigation */}
           <nav className="lg:hidden bg-[#F8F9FA] border-b border-[#E2E8F0] py-2 sm:py-3 px-3 sm:px-4 flex items-center gap-2 sm:gap-4 overflow-x-auto whitespace-nowrap">
             <Link to="/sub-lab-lab" className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 text-slate-600 hover:bg-slate-100 rounded-lg text-[10px] sm:text-xs font-medium transition shrink-0">
@@ -506,8 +503,8 @@ export default function FinalLogbookLabResearcher() {
               </svg>
               <span>Support</span>
             </Link>
-            <Link 
-              to="/login" 
+            <Link
+              to="/login"
               onClick={() => {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
@@ -522,10 +519,10 @@ export default function FinalLogbookLabResearcher() {
           </nav>
 
           <Sidebar onLabChange={handleLabChange} selectedLab={selectedLab} />
-          
+
           <main className="flex-1 bg-white overflow-y-auto p-3 sm:p-4 md:p-6 lg:p-8">
             <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
-              
+
               {/* Breadcrumb - Responsive */}
               <nav aria-label="Breadcrumb" className="flex text-[10px] sm:text-xs text-slate-500 overflow-x-auto">
                 <ol className="inline-flex items-center space-x-1 md:space-x-2 flex-wrap">
@@ -540,7 +537,7 @@ export default function FinalLogbookLabResearcher() {
                   </li>
                 </ol>
               </nav>
-              
+
               {/* Welcome Header - Responsive */}
               <div className="bg-white rounded-xl border border-[#E2E8F0] p-4 sm:p-6 shadow-sm">
                 <h1 className="text-xl sm:text-2xl font-bold text-[#1A233A] font-serif">
@@ -583,21 +580,19 @@ export default function FinalLogbookLabResearcher() {
                   const count = allTableData.filter(row => String(row.subLab).includes(room.code)).length;
                   const isActive = selectedLab === room.code;
                   return (
-                    <div 
+                    <div
                       key={room.code}
                       onClick={() => handleLabChange(room.code)}
-                      className={`bg-white rounded-xl border p-3 sm:p-4 shadow-sm cursor-pointer transition-all hover:shadow-md ${
-                        isActive ? 'border-[#1A233A] ring-2 ring-[#1A233A]/20' : 'border-[#E2E8F0]'
-                      }`}
+                      className={`bg-white rounded-xl border p-3 sm:p-4 shadow-sm cursor-pointer transition-all hover:shadow-md ${isActive ? 'border-[#1A233A] ring-2 ring-[#1A233A]/20' : 'border-[#E2E8F0]'
+                        }`}
                     >
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="text-[8px] sm:text-xs text-[#64748B] font-medium">I.{room.code}</p>
                           <p className="text-xs sm:text-sm font-bold text-[#1A233A] leading-tight truncate max-w-[130px]">{room.name}</p>
                         </div>
-                        <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          isActive ? 'bg-[#1A233A] text-white' : 'bg-gray-100 text-[#1A233A]'
-                        }`}>
+                        <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 ${isActive ? 'bg-[#1A233A] text-white' : 'bg-gray-100 text-[#1A233A]'
+                          }`}>
                           <span className="font-bold text-sm sm:text-base">{count}</span>
                         </div>
                       </div>
@@ -609,7 +604,7 @@ export default function FinalLogbookLabResearcher() {
 
               {/* Data Table Container */}
               <div className="bg-white rounded-xl border border-[#E2E8F0] shadow-sm flex flex-col">
-                
+
                 {/* Table Pagination Info - Responsive */}
                 <div className="px-3 sm:px-6 py-2 sm:py-3 border-b border-[#E2E8F0] flex flex-wrap items-center justify-between bg-gray-50 text-[10px] sm:text-sm gap-2">
                   <span className="text-[#64748B]">
@@ -620,8 +615,8 @@ export default function FinalLogbookLabResearcher() {
                       </span>
                     )}
                   </span>
-                  
-                  <Pagination 
+
+                  <Pagination
                     currentPage={currentPage}
                     totalPages={totalPages}
                     paginate={paginate}
@@ -647,8 +642,8 @@ export default function FinalLogbookLabResearcher() {
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[100px] sm:min-w-[140px]">PROYEK PENELITIAN</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[120px]">PERIODE PENELITIAN</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[120px]">DETAIL AKTIVITAS</th>
-                          <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[100px]">KTM/ KARTU IDENTITAS</th>
-                          <th className="px-2 sm:px-4 py-2 sm:py-4 text-center min-w-[70px] sm:min-w-[100px]">PARAF STUDENT</th>
+                          <th className="px-2 sm:px-4 py-2 sm:py-4 min-w-[80px] sm:min-w-[100px]">NAMA PENELITI</th>
+                          <th className="px-2 sm:px-4 py-2 sm:py-4 text-center min-w-[70px] sm:min-w-[100px]">PARAF PENELITI</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 text-center min-w-[70px] sm:min-w-[100px]">PARAF PI</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 text-center min-w-[90px] sm:min-w-[140px]">CATATAN & PARAF KEPALA LAB</th>
                           <th className="px-2 sm:px-4 py-2 sm:py-4 text-center min-w-[90px] sm:min-w-[140px]">CATATAN & PARAF LABORAN</th>
@@ -668,8 +663,8 @@ export default function FinalLogbookLabResearcher() {
 
               {/* Back Button - Responsive */}
               <div className="flex justify-end pt-2 sm:pt-4 pb-4 sm:pb-8">
-                <Link 
-                  to="/" 
+                <Link
+                  to="/"
                   className="bg-[#1A233A] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-bold shadow-md hover:bg-gray-800 transition-colors flex items-center gap-1 sm:gap-2 font-serif text-xs sm:text-sm"
                 >
                   Back to Beranda →
