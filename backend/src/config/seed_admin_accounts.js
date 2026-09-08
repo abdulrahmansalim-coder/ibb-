@@ -32,7 +32,7 @@ async function seedAdmins() {
     console.log('🌱 Memulai proses seeding akun admin...');
     for (const account of adminAccounts) {
         const hashedPassword = bcrypt.hashSync(account.password, 10);
-        
+
         await new Promise((resolve) => {
             // Cek apakah akun dengan email ini sudah ada
             const checkQuery = `SELECT * FROM ${account.table} WHERE LOWER(TRIM(email)) = ?`;
